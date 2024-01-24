@@ -1,0 +1,28 @@
+.label {
+  font-weight: var(--semiBold);
+  font-size: var(--mediumFont);
+  margin-bottom: 10px;
+
+  .title {
+    margin-right: auto;
+
+    display: flex;
+    align-self: center;
+  }
+
+  .counter {
+    display: flex;
+    border-radius: 6px;
+    background: var(--focusColor);
+    padding: 5px;
+  }
+
+  .value input {
+    margin: 3px 10px;
+    font-size: var(--mediumFont);
+    color: var(--textLightPrimary);
+    width: 30px;
+    text-align: center;
+    background: transparent;
+  }
+}

@@ -1,0 +1,87 @@
+.container {
+  width: 400px;
+  height: 500px;
+  display: block;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 0 1rem 0, rgba(0, 0, 0, 0.12) 0 1rem 1rem 0;
+
+  .title {
+    font-weight: var(--bold);
+    font-size: var(--largeFont);
+    padding: 30px 30px 0;
+  }
+
+  .subtitle {
+    font-weight: var(--semiBold);
+    color: var(--textSecondary);
+    padding: 0 30px 20px;
+    border-bottom: 4px solid var(--devideColor)
+  }
+
+  form {
+    padding: 30px;
+
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
+    margin-right: 10px;
+  }
+
+  .numberInputsContainer label {
+    margin: 10px 0 10px auto;
+  }
+
+  .numberInputsContainer input {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    margin-left: auto;
+    border-radius: 6px;
+  }
+
+  .datePicker {
+    margin-bottom: 40px;
+
+    .dateTitle {
+      font-size: var(--mediumFont);
+      font-weight: var(--semiBold);
+      margin-bottom: 30px;
+    }
+
+    .dateSelectsContainer {
+      display: flex;
+      flex-wrap: nowrap;
+
+    }
+
+    select {
+      width: 100%;
+      margin: 0 10px;
+      padding: 5px;
+      font-weight: var(--semiBold);
+      font-size: var(--mediumFontFont);
+      border: 2px solid var(--devideColor);
+      border-radius: 6px;
+    }
+
+    select option {
+      font-size: var(--mediumFontFont);
+    }
+  }
+
+  .deliveryFeeWrap {
+    display: flex;
+    justify-content: space-between;
+    font-weight: var(--semiBold);
+    font-size: var(--mediumFont);
+
+  }
+}
+
+
+

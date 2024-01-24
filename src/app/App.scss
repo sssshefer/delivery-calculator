@@ -1,55 +1,12 @@
-@font-face {
-  font-family: "Montserrat";
-  src: url("../shared/fonts/Omnes-Light.woff2") format("truetype");
-  font-style: normal;
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../shared/fonts/Omnes-Regular.woff2") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../shared/fonts/Omnes-SemiBold.woff2") format("truetype");
-  font-style: normal;
-  font-weight: 600;
-}
-
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../shared/fonts/OmnesCond-Black.woff2") format("truetype");
-  font-style: normal;
-  font-weight: 900;
-}
-
-$darkPrimaryColor: #1d1d1d;
-$lightPrimaryColor: #fff;
-$highlightPrimaryColor: #00c2e8;
-
-$inactiveColor: grey;
-$errorColor: red;
-
-$light: 300;
-$regular: 400;
-$semiBold: 600;
-$bold: 900;
 
 *, ::after, ::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Omnes, sans-serif, Arial;
+  font-family: WoltHeading-Omnes,Omnes, Arial, sans-serif;
   border: 0 solid;
-}
+  color: var(--textPrimary);
 
-html {
-  font-family: Omnes, sans-serif;
-  color: $darkPrimaryColor;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -66,12 +23,28 @@ input::placeholder, textarea::placeholder {
   opacity: 1;
   color: #9ca3af
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
 
 .btn-blue{
   border-color: rgb(0 194 232/var(--tw-border-opacity));
   background-color: rgb(0 194 232/var(--tw-bg-opacity));
-  font-weight: $semiBold;
+  font-weight: var(--semiBold);
   color: rgb(255 255 255/var(--tw-text-opacity));
+}
+
+
+.App{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  height: 100svh;
 }
 
 
