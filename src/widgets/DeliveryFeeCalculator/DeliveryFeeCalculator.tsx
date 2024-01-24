@@ -1,10 +1,15 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import cl from './DeliveryFeeCalculator.module.scss'
 import PositiveNumberInput from "../../entities/PositiveNumberInput/PositiveNumberInput";
-import PositiveIncreaseDecreaseInput from "../../entities/PositiveIncreaseDecreaseInput/PositiveIncreaseDecreaseInput";
-import DateInput from "../../entities/DateInput/DateInput";
+import PositiveIncDecInput from "../../entities/PositiveIncDecInput/PositiveIncDecInput";
+import DatePicker from "../../entities/DatePicker/DatePicker";
 import TimeInput from "../../entities/TimeInput/TimeInput";
 import DeliveryFee from "../../entities/DeliveryFee/DeliveryFee";
+import {deliveryTimeStep, minDeliveryDelay} from "./constants/constants";
+import PositiveNumberInputWrap from "./ui/PositiveNumberInputWrap/PositiveNumberInputWrap";
+import PositiveIncDecInputWrap from "./ui/PositiveIncDecInputWrap/PositiveIncDecInputWrap";
+import DatePickerWrap from "./ui/DatePickerWrap/DatePickerWrap";
+import DeliveryFeeWrap from "./ui/DeliveryFeeWrap/DeliveryFeeWrap";
 
 const DeliveryFeeCalculator: FC = () => {
     const [cartValue, setCartValue] = useState<number>(0)
@@ -15,43 +20,48 @@ const DeliveryFeeCalculator: FC = () => {
     const [deliveryFee, setDeliveryFee] = useState<number>(0)
 
     useEffect(() => {
-        const currentTime = new Date();
-        currentTime.setMinutes(currentTime.getMinutes() + 45 - currentTime.getMinutes()%15,0,0)
-
-        setDeliveryTime(currentTime)
-
+        //Smallest delivery may vary from minDeliveryDelay to (minDeliveryDelay + deliveryTimeStep)
+        setDeliveryTimeToEarliest(minDeliveryDelay, deliveryTimeStep)
     }, [])
 
+    function setDeliveryTimeToEarliest(minDeliveryDelay: number, deliveryTimeStep: number): void {
+        const now = new Date();
+        const minutesToNextStep = deliveryTimeStep - (now.getMinutes() % deliveryTimeStep)
+        const delay = minDeliveryDelay + minutesToNextStep;
+
+        now.setMinutes(now.getMinutes() + delay, 0, 0)
+        setDeliveryTime(now)
+    }
 
     return (
-        <div className={cl.container}>
+        <div className={cl.wrap}>
             <h1 className={`${cl.title} `}>Delivery Fee Calculator</h1>
-            <p className={cl.subtitle}>
-                Calculate a fee for your delivery
-            </p>
+            <p className={cl.subtitle}>Calculate a fee for your delivery</p>
             <form>
-                <div className={cl.numberInputsContainer}>
-                    <PositiveNumberInput title={"Cart Value"} dataTestId={"cartValue"} value={cartValue}
-                                         setValue={setCartValue} units={'€'}/>
-                    <PositiveNumberInput title={"Delivery Distance"} dataTestId={"deliveryDistance"}
-                                         value={deliveryDistance} setValue={setDeliveryDistance} units={'m'}/>
-                </div>
+                <div className={cl.numberInputsWrap}>
+                    <PositiveNumberInputWrap title={"Cart Value"} units={'€'}>
+                        <PositiveNumberInput dataTestId={"cartValue"} value={cartValue} setValue={setCartValue}/>
+                    </PositiveNumberInputWrap>
 
-                <PositiveIncreaseDecreaseInput onClick={setNumberOfItems} title={"Number of Items"}
-                                               dataTestId={"numberOfItems"}
-                                               type={"number"} value={numberOfItems}/>
-                {/* add polyfill */}
-                <div className={cl.datePicker}>
-                    <div className={cl.dateTitle}>Select delivery time</div>
-                    <div className={cl.dateSelectsContainer}>
-                        <DateInput setDeliveryTime={setDeliveryTime}/>
-                        <TimeInput deliveryTime={new Date(deliveryTime)} setDeliveryTime={setDeliveryTime}/>
-                    </div>
+                    <PositiveNumberInputWrap title={"Delivery Distance"} units={'m'}>
+                        <PositiveNumberInput dataTestId={"deliveryDistance"} value={deliveryDistance}
+                                             setValue={setDeliveryDistance}/>
+                    </PositiveNumberInputWrap>
+
+                    <PositiveIncDecInputWrap title={"Number of Items"}>
+                        <PositiveIncDecInput onClick={setNumberOfItems}
+                                             dataTestId={"numberOfItems"}
+                                             value={numberOfItems}/>
+                    </PositiveIncDecInputWrap>
                 </div>
-                <div className={cl.deliveryFeeWrap}>
-                   <span>Your final delivery fee</span><DeliveryFee deliveryFee={deliveryFee} numberOfItems={numberOfItems} cartValue={cartValue}
-                deliveryTime={deliveryTime} deliveryDistance={deliveryDistance} setDeliveryFee={setDeliveryFee}/>
-                </div>
+                <DatePickerWrap setDeliveryTime={setDeliveryTime} deliveryTime={deliveryTime}/>
+                <DeliveryFeeWrap title={"Your final delivery fee"}>
+                    <DeliveryFee deliveryFee={deliveryFee}
+                                 numberOfItems={numberOfItems} cartValue={cartValue}
+                                 deliveryTime={deliveryTime}
+                                 deliveryDistance={deliveryDistance}
+                                 setDeliveryFee={setDeliveryFee}/>
+                </DeliveryFeeWrap>
             </form>
 
         </div>

@@ -1,0 +1,31 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  font-weight: var(--semiBold);
+  font-size: var(--mediumFont);
+
+  input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80px;
+    height: 40px;
+    margin-left: auto;
+    border-radius: 6px;
+    border: 2px solid var(--focusColor);
+    font-size: var(--mediumFont);
+  }
+
+  .units {
+    margin-left: 10px;
+    width: 15px;
+  }
+}
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from 'react';
-import cl from './DeliveryFee.module.css'
+import cl from './DeliveryFee.module.scss'
 
 interface props {
     deliveryFee: number,
@@ -92,7 +92,7 @@ const DeliveryFee: FC<props> = ({
     }
 
     return (
-        <span className={cl.container}>
+        <span className={cl.wrap}>
             {deliveryFee}
         </span>
     );

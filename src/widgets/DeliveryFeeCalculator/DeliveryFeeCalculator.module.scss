@@ -1,4 +1,4 @@
-.container {
+.wrap {
   width: 400px;
   height: 500px;
   display: block;
@@ -23,63 +23,10 @@
 
   }
 
-  label {
-    display: flex;
-    align-items: center;
-  }
-
-  span {
-    margin-right: 10px;
-  }
-
-  .numberInputsContainer label {
-    margin: 10px 0 10px auto;
-  }
-
-  .numberInputsContainer input {
-    display: inline-block;
-    width: 80px;
-    height: 40px;
-    margin-left: auto;
-    border-radius: 6px;
-  }
-
-  .datePicker {
-    margin-bottom: 40px;
-
-    .dateTitle {
-      font-size: var(--mediumFont);
-      font-weight: var(--semiBold);
-      margin-bottom: 30px;
+  .numberInputsWrap {
+    > div {
+      margin: 10px 0 10px;
     }
-
-    .dateSelectsContainer {
-      display: flex;
-      flex-wrap: nowrap;
-
-    }
-
-    select {
-      width: 100%;
-      margin: 0 10px;
-      padding: 5px;
-      font-weight: var(--semiBold);
-      font-size: var(--mediumFontFont);
-      border: 2px solid var(--devideColor);
-      border-radius: 6px;
-    }
-
-    select option {
-      font-size: var(--mediumFontFont);
-    }
-  }
-
-  .deliveryFeeWrap {
-    display: flex;
-    justify-content: space-between;
-    font-weight: var(--semiBold);
-    font-size: var(--mediumFont);
-
   }
 }
 

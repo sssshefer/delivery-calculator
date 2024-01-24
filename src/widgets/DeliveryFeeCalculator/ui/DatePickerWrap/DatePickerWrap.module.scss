@@ -1,0 +1,31 @@
+
+.wrap {
+  margin-bottom: 40px;
+
+  .title {
+    font-size: var(--mediumFont);
+    font-weight: var(--semiBold);
+    margin-bottom: 30px;
+  }
+
+  .selectsWrap {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  select {
+    width: 100%;
+    margin: 0 10px;
+    padding: 5px;
+    font-weight: var(--semiBold);
+    font-size: var(--mediumFontFont);
+    border: 2px solid var(--devideColor);
+    border-radius: 6px;
+  }
+
+  select option {
+    font-size: var(--mediumFontFont);
+    font-weight: var(--semiBold);
+    color: lighten(#1d1d1d, 20%);
+  }
+}

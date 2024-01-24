@@ -1,13 +1,11 @@
-.label {
+.wrap {
   font-weight: var(--semiBold);
   font-size: var(--mediumFont);
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 
   .title {
     margin-right: auto;
-
-    display: flex;
-    align-self: center;
   }
 
   .counter {
@@ -17,7 +15,7 @@
     padding: 5px;
   }
 
-  .value input {
+  .counter input {
     margin: 3px 10px;
     font-size: var(--mediumFont);
     color: var(--textLightPrimary);
