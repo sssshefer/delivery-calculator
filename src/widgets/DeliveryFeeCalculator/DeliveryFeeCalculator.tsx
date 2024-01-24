@@ -54,16 +54,15 @@ const DeliveryFeeCalculator: FC = () => {
                                              value={numberOfItems}/>
                     </PositiveIncDecInputWrap>
                 </div>
-                <DatePickerWrap setDeliveryTime={setDeliveryTime} deliveryTime={deliveryTime}/>
-                <DeliveryFeeWrap title={"Your final delivery fee"}>
-                    <DeliveryFee deliveryFee={deliveryFee}
-                                 numberOfItems={numberOfItems} cartValue={cartValue}
-                                 deliveryTime={deliveryTime}
-                                 deliveryDistance={deliveryDistance}
-                                 setDeliveryFee={setDeliveryFee}/>
-                </DeliveryFeeWrap>
+                <DatePickerWrap title={"Select delivery Time"} setDeliveryTime={setDeliveryTime} deliveryTime={deliveryTime}/>
             </form>
-
+            <DeliveryFeeWrap title={"Delivery Fee"}>
+                <DeliveryFee deliveryFee={deliveryFee}
+                             numberOfItems={numberOfItems} cartValue={cartValue}
+                             deliveryTime={deliveryTime}
+                             deliveryDistance={deliveryDistance}
+                             setDeliveryFee={setDeliveryFee}/>
+            </DeliveryFeeWrap>
         </div>
     );
 };

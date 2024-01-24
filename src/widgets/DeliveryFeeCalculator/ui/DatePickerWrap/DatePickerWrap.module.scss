@@ -1,25 +1,24 @@
 
 .wrap {
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 
   .title {
     font-size: var(--mediumFont);
     font-weight: var(--semiBold);
-    margin-bottom: 30px;
+    margin:15px 0 25px;
   }
 
   .selectsWrap {
     display: flex;
-    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
   select {
-    width: 100%;
-    margin: 0 10px;
+    width: 47%;
     padding: 5px;
     font-weight: var(--semiBold);
     font-size: var(--mediumFontFont);
-    border: 2px solid var(--devideColor);
+    border: 2px solid var(--lightGreyColor);
     border-radius: 6px;
   }
 

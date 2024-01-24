@@ -1,19 +1,22 @@
 .button {
-  background: var(--textLightPrimary);
+  background: var(--lightPrimaryColor);
   border-radius: 50%;
   width: 30px;
   height: 30px;
   position: relative;
 
-  div {
-    font-size: 26px;
+  > div {
+    font-size: 30px;
     font-weight: var(--semiBold);
-    color: var(--focusColor);
+    color: var(--inactiveColor);
     position: absolute;
-    top:40%;
+    top: 36%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-
+    transition: 0.2s;
   }
 
+  > div:active {
+    color:var(--focusColor)
+  }
 }

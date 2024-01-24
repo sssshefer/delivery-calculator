@@ -11,14 +11,13 @@
   .counter {
     display: flex;
     border-radius: 6px;
-    background: var(--focusColor);
     padding: 5px;
   }
 
   .counter input {
     margin: 3px 10px;
     font-size: var(--mediumFont);
-    color: var(--textLightPrimary);
+    color: var(--primaryColor);
     width: 30px;
     text-align: center;
     background: transparent;

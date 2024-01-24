@@ -8,7 +8,9 @@ const DeliveryFeeWrap:FC<props> = ({title, children}) => {
     return (
         <div className={cl.wrap}>
             <span>{title}</span>
-            {children}
+            <span className={cl.value}>
+                {children} €
+            </span>
         </div>
     );
 };

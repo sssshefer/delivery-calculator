@@ -25,11 +25,10 @@ const DeliveryFee: FC<props> = ({
     function calculateTotalFee() {
         let deliveryFee = 0;
 
-        deliveryFee += calculateCartValueFee(cartValue)
-        console.log(deliveryFee)
-        deliveryFee += calculateDistanceFee(deliveryDistance)
-        deliveryFee += calculateItemSurcharge(numberOfItems)
-        deliveryFee += calculateBulkFee(numberOfItems)
+        deliveryFee += calcCartValueFee(cartValue)
+        deliveryFee += calcDistanceFee(deliveryDistance)
+        deliveryFee += calcItemSurcharge(numberOfItems)
+        deliveryFee += calcBulkFee(numberOfItems)
 
         if (cartValue >= 200) {
             return 0
@@ -42,7 +41,7 @@ const DeliveryFee: FC<props> = ({
         return deliveryFee
     }
 
-    function calculateCartValueFee(cartValue: number) {
+    function calcCartValueFee(cartValue: number) {
         let totalFee = 0;
         if (cartValue < 10) {
             totalFee = 10-cartValue;
@@ -50,7 +49,7 @@ const DeliveryFee: FC<props> = ({
         return totalFee
     }
 
-    function calculateDistanceFee(deliveryDistance: number) {
+    function calcDistanceFee(deliveryDistance: number) {
         let totalFee = 2;
         const distanceFeeStep = 500;
         const distanceFeeStart = 1000;
@@ -61,7 +60,7 @@ const DeliveryFee: FC<props> = ({
         return totalFee
     }
 
-    function calculateItemSurcharge(numberOfItems: number) {
+    function calcItemSurcharge(numberOfItems: number) {
         const itemSurchargeRate = 0.5;
         const thresholdForSurcharge = 4;
 
@@ -73,7 +72,7 @@ const DeliveryFee: FC<props> = ({
         return surchargeQuantity * itemSurchargeRate;
     }
 
-    function calculateBulkFee(numberOfItems: number) {
+    function calcBulkFee(numberOfItems: number) {
         const bulkFeeRate = 1.2;
         const thresholdForBulkFee = 12;
 

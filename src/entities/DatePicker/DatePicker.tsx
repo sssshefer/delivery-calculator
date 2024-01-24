@@ -37,7 +37,6 @@ const DatePicker: FC<options> = ({setDeliveryTime}) => {
             {[...Array(4)].map((i, index) =>
                 <option value={index + 2}>
                     {dayNames[getNextDays(index + 2).getDay()] + ' - ' + getNextDays(index + 2).getDate()}
-
                 </option>
             )}
         </select>

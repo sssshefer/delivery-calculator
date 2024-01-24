@@ -1,6 +1,13 @@
 .wrap {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  border-top: 2px dashed var(--lightGreyColor);
   font-weight: var(--semiBold);
   font-size: var(--mediumFont);
+  padding: 15px 30px 25px;
+
+  .value span{
+    font-size: var(--largeFont);
+  }
 }

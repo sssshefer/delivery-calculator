@@ -13,17 +13,27 @@ const TimeInput: FC<Options> = ({deliveryTime, setDeliveryTime}) => {
         setTimeOptions(generateTimeOptions());
     }, [deliveryTime]);
 
-    function generateTimeOptions() {
-        let startTime = new Date(deliveryTime)
+    function calcStartDeliveryTime(date: Date): Date {
+        let startTime = new Date(date)
         startTime.setHours(11, 0, 0, 0)
 
-        let finishTime = new Date(deliveryTime)
-        finishTime.setHours(21, 30, 0, 0)
         if (startTime < new Date()) {
             startTime = new Date()
             //min delivery gap is 30 min
-            startTime.setMinutes(startTime.getMinutes() + 45 - startTime.getMinutes()%15)
+            startTime.setMinutes(startTime.getMinutes() + 45 - startTime.getMinutes() % 15)
         }
+        return startTime
+    }
+
+    function calcFinishDeliveryTime(date: Date): Date {
+        let finishTime = new Date(date)
+        finishTime.setHours(21, 30, 0, 0)
+        return finishTime;
+    }
+
+    function generateTimeOptions() {
+        const finishTime = calcFinishDeliveryTime(deliveryTime)
+        const startTime = calcStartDeliveryTime(deliveryTime)
 
         const options = [];
 
@@ -62,6 +72,8 @@ const TimeInput: FC<Options> = ({deliveryTime, setDeliveryTime}) => {
         })} name="deliveryTime" id="time"
                 onChange={(e) =>
                     handleChange(e.target.value)}
+                disabled={timeOptions.length === 0}
+                style={timeOptions.length === 0 ? {background: 'var(--divideColor)'} : {}}
         >
             {
                 timeOptions.map((time, index) => (
