@@ -3,6 +3,9 @@
   align-items: center;
   font-weight: var(--semiBold);
   font-size: var(--mediumFont);
+  flex-wrap: wrap;
+
+
 
   input {
     display: flex;
@@ -11,8 +14,8 @@
     text-align: center;
     width: 80px;
     height: 40px;
-    margin-left: auto;
     border-radius: 6px;
+    margin-left: auto;
     border: 2px solid var(--lightGreyColor);
     font-size: var(--mediumFont);
   }
@@ -22,8 +25,6 @@
     width: 15px;
   }
 }
-
-
 
 
 
