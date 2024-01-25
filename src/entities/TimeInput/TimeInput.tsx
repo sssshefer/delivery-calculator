@@ -1,12 +1,12 @@
 import React, {FC, useState, useEffect, useRef} from 'react';
 import {Dispatch, SetStateAction} from 'react';
 
-interface Options {
+interface ITimeInput {
     deliveryTime: Date,
     setDeliveryTime: Dispatch<SetStateAction<Date>>;
 }
 
-const TimeInput: FC<Options> = ({deliveryTime, setDeliveryTime}) => {
+const TimeInput: FC<ITimeInput> = ({deliveryTime, setDeliveryTime}) => {
     const [timeOptions, setTimeOptions] = useState<string[]>([]);
 
     useEffect(() => {

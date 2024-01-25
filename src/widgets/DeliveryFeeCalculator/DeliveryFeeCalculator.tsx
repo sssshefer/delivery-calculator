@@ -10,28 +10,17 @@ import PositiveNumberInputWrap from "./ui/PositiveNumberInputWrap/PositiveNumber
 import PositiveIncDecInputWrap from "./ui/PositiveIncDecInputWrap/PositiveIncDecInputWrap";
 import DatePickerWrap from "./ui/DatePickerWrap/DatePickerWrap";
 import DeliveryFeeWrap from "./ui/DeliveryFeeWrap/DeliveryFeeWrap";
+import {useDeliveryTime} from "../../shared/hooks/useDeliveryTime";
 
 const DeliveryFeeCalculator: FC = () => {
     const [cartValue, setCartValue] = useState<number>(0)
     const [deliveryDistance, setDeliveryDistance] = useState<number>(0)
     const [numberOfItems, setNumberOfItems] = useState<number>(0)
-    const [deliveryTime, setDeliveryTime] = useState<Date>(new Date())
+    const [deliveryTime, setDeliveryTime] = useDeliveryTime()
 
     const [deliveryFee, setDeliveryFee] = useState<number>(0)
 
-    useEffect(() => {
-        //Smallest delivery may vary from minDeliveryDelay to (minDeliveryDelay + deliveryTimeStep)
-        setDeliveryTimeToEarliest(minDeliveryDelay, deliveryTimeStep)
-    }, [])
 
-    function setDeliveryTimeToEarliest(minDeliveryDelay: number, deliveryTimeStep: number): void {
-        const now = new Date();
-        const minutesToNextStep = deliveryTimeStep - (now.getMinutes() % deliveryTimeStep)
-        const delay = minDeliveryDelay + minutesToNextStep;
-
-        now.setMinutes(now.getMinutes() + delay, 0, 0)
-        setDeliveryTime(now)
-    }
 
     return (
         <div className={cl.wrap}>

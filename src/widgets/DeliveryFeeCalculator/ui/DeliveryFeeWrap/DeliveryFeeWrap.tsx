@@ -1,10 +1,10 @@
 import React, {FC, ReactNode} from 'react';
 import cl from "./DeliveryFeeWrap.module.scss";
-interface props{
+interface IDeliveryFeeWrap{
     title:string,
     children:ReactNode
 }
-const DeliveryFeeWrap:FC<props> = ({title, children}) => {
+const DeliveryFeeWrap:FC<IDeliveryFeeWrap> = ({title, children}) => {
     return (
         <div className={cl.wrap}>
             <span>{title}</span>

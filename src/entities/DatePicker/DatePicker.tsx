@@ -2,11 +2,11 @@ import React, {Dispatch, FC, SetStateAction} from 'react';
 import cl from './DatePicker.module.scss'
 import {dayNames} from "./constant/dayNames";
 
-interface options {
+interface IDatePicker {
     setDeliveryTime: Dispatch<SetStateAction<Date>>
 }
 
-const DatePicker: FC<options> = ({setDeliveryTime}) => {
+const DatePicker: FC<IDatePicker> = ({setDeliveryTime}) => {
     const currentTime = new Date()
     const getNextDays = (days: number): Date => {
         const nextDay = new Date(currentTime)

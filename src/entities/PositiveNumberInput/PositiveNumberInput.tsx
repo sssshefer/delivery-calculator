@@ -1,13 +1,13 @@
 import React, {FC, useState} from 'react';
 import cl from './PositiveNumberInput.module.scss'
 
-interface inputProps {
+interface IPositiveNumberInput {
     dataTestId: string,
     value: number,
     setValue: (value: number) => void,
 }
 
-const PositiveNumberInput: FC<inputProps> = ({dataTestId,value, setValue}) => {
+const PositiveNumberInput: FC<IPositiveNumberInput> = ({dataTestId,value, setValue}) => {
     const [showingValue, setShowingValue] = useState<string>(String(value))
 
     function handleChange(value: string): void {

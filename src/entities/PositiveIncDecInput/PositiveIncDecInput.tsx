@@ -2,13 +2,13 @@ import React, {FC} from 'react';
 import cl from './PositiveIncDecInput.module.scss'
 import SmallActionButton from "../SmallActionButton/SmallActionButton";
 
-interface inputProps {
+interface IPositiveIncDecInput {
     dataTestId: string,
     onClick: (prev: any) => void,
     value: number
 }
 
-const PositiveIncDecInput: FC<inputProps> = ({ dataTestId, onClick, value}) => {
+const PositiveIncDecInput: FC<IPositiveIncDecInput> = ({ dataTestId, onClick, value}) => {
     function handleSubtract() {
         if (value > 0)
             onClick((prev: number) => prev - 1)
