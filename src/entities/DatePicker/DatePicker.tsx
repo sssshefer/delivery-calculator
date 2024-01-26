@@ -1,18 +1,16 @@
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {dayNames} from "./constant/dayNames";
 
 interface IDatePicker {
     setTime: Dispatch<SetStateAction<Date>>
-    startDate:Date,
-    currentDate:Date
+    startDate: Date,
+    currentDate: Date,
+    numberOfDeliveryDays: number,
+    dataTestId:string
 }
 
-const DatePicker= ({setTime, startDate, currentDate}:IDatePicker) => {
-    const [value, setValue] = useState(currentDate.getDate() - startDate.getDate())
-
-    useEffect(()=>{
-        setValue(currentDate.getDate() - startDate.getDate())
-    },[currentDate])
+const DatePicker = ({setTime, startDate, currentDate, numberOfDeliveryDays, dataTestId}: IDatePicker,) => {
+    const currentStartDaysDelta = currentDate.getDate() - startDate.getDate()
     const getNextDays = (days: number): Date => {
         const nextDay = new Date(startDate)
         nextDay.setDate(nextDay.getDate() + days);
@@ -22,18 +20,18 @@ const DatePicker= ({setTime, startDate, currentDate}:IDatePicker) => {
 
     const handleChange = (days: number) => {
         const selectedTime = getNextDays(days)
-       setTime(selectedTime)
+        setTime(selectedTime)
     }
 
 
     return (
         <select name="deliveryTime"
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChange(Number(e.target.value))}
-                value = {value}
+                value={currentStartDaysDelta} data-test-id={dataTestId}
         >
             <option value={0}>Today</option>
             <option value={1}>Tomorrow</option>
-            {[...Array(4)].map((i, index) =>
+            {[...Array(numberOfDeliveryDays - 2)].map((i, index) =>
                 <option value={index + 2}>
                     {dayNames[getNextDays(index + 2).getDay()] + ' - ' + getNextDays(index + 2).getDate()}
                 </option>

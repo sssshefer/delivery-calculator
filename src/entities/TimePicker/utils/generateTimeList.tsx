@@ -8,7 +8,7 @@ interface IGenerateTimeList {
     ): string[]
 }
 
-const GenerateTimeList: IGenerateTimeList = (startTime,finishDate, step) => {
+const generateTimeList: IGenerateTimeList = (startTime,finishDate, step) => {
     const firstListTime = new Date(startTime);
     const options = [];
     const listItem = new Date(firstListTime)
@@ -28,4 +28,4 @@ const GenerateTimeList: IGenerateTimeList = (startTime,finishDate, step) => {
     return options;
 };
 
-export default GenerateTimeList;
+export default generateTimeList;

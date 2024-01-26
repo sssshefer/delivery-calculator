@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {
-    deliveryTimeStep,
-    finishDeliveryTime,
-    minDeliveryDelay,
-    startDeliveryTime
-} from "../../widgets/DeliveryFeeCalculator/constants/constants";
-import {getEarliestDeliveryTime} from "../utils/getMinDeliveryTime";
+import {finishDeliveryTime,} from "../constants/finishDeliveryTime";
+import {getEarliestDeliveryTime} from "../../../shared/utils/getMinDeliveryTime";
+import {minDeliveryDelay} from "../constants/minDeliveryDelay";
+import {deliveryTimeStep} from "../constants/deliveryTimeStep";
+import {startDeliveryTime} from "../constants/startDeliveryTime";
 
 export const useDeliveryTime = (): [Date, React.Dispatch<React.SetStateAction<Date>>] => {
     const [deliveryTime, setDeliveryTime] = useState<Date>(new Date())
@@ -17,7 +15,6 @@ export const useDeliveryTime = (): [Date, React.Dispatch<React.SetStateAction<Da
             deliveryTimeStep,
             startDeliveryTime,
             finishDeliveryTime,
-
         );
         setDeliveryTime(earliestDeliveryTime)
     }, [deliveryTime.getDate()])

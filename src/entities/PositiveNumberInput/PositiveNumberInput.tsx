@@ -9,7 +9,7 @@ interface IPositiveNumberInput
 }
 
 
-const PositiveNumberInput= ({dataTestId, value, setValue,...restProps}:IPositiveNumberInput) => {
+const PositiveNumberInput= ({dataTestId, value, setValue,...otherInputProps}:IPositiveNumberInput) => {
     const [showedValue, setShowedValue] = useState<string>(String(value))
 
     function handleChange(value: string): void {
@@ -21,7 +21,7 @@ const PositiveNumberInput= ({dataTestId, value, setValue,...restProps}:IPositive
     return (
         <input value={showedValue}
                onChange={(e: React.ChangeEvent<HTMLInputElement>): void => handleChange(e.currentTarget.value)}
-               data-test-id={dataTestId} type="number" min={0} {...restProps}/>
+               data-test-id={dataTestId} type="number" min={0} {...otherInputProps}/>
 
     );
 };

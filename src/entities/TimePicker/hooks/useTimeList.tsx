@@ -1,21 +1,20 @@
-import React, {SetStateAction, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import generateTimeList from "../utils/generateTimeList";
-import createDateWithCustomTime from "../utils/createDateWithCustomTime";
 
 interface IUseTimeList {
     (startTime: Date,
      finishTime: Date,
      step: number,
-    ): [string[], React.Dispatch<SetStateAction<string[]>>]
+    ): string[]
 }
 
-const UseTimeList: IUseTimeList = (startTime,finishTime, step) => {
+const UseTimeList: IUseTimeList = (startTime, finishTime, step) => {
     const [timeList, setTimeList] = useState<string[]>([]);
     useEffect(() => {
         setTimeList(generateTimeList(startTime, finishTime, step));
     }, [startTime]);
 
-    return [timeList, setTimeList]
+    return timeList
 };
 
 export default UseTimeList;

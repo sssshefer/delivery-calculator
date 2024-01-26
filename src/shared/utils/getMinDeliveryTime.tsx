@@ -1,4 +1,4 @@
-import createDateWithCustomTime from "./createDateWithCustomTime";
+import createDateWithCustomTime from "../../entities/TimePicker/utils/createDateWithCustomTime";
 export function getEarliestDeliveryTime(date: Date, minDeliveryDelay: number, deliveryTimeStep: number,
                                         startDeliveryTime: string, finishDeliveryTime: string): Date {
     const startTimeForDate = createDateWithCustomTime(startDeliveryTime, date)

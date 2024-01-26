@@ -1,42 +1,25 @@
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import formatDateForTimeList from "../../shared/utils/formatDateForTimeList";
-import useTimeList from "../../shared/hooks/useTimeList";
-import {
-    deliveryTimeStep,
-    finishDeliveryTime,
-    minDeliveryDelay,
-    startDeliveryTime
-} from "../../widgets/DeliveryFeeCalculator/constants/constants";
-import createDateWithCustomTime from "../../shared/utils/createDateWithCustomTime";
-import {getEarliestDeliveryTime} from "../../shared/utils/getMinDeliveryTime";
-import {useDeliveryTime} from "../../shared/hooks/useDeliveryTime";
+import React, {Dispatch, SetStateAction} from 'react';
+import useTimeList from "./hooks/useTimeList";
+import {finishDeliveryTime} from "../../widgets/DeliveryFeeCalculator/constants/finishDeliveryTime";
+import createDateWithCustomTime from "./utils/createDateWithCustomTime";
+import useTimeSelectValue from "./hooks/useTimeSelectValue";
+import useEarliestTodayDeliveryOfTheDay from "../../widgets/DeliveryFeeCalculator/hooks/useEarliestDeliveryOfTheDay";
+import {deliveryTimeStep} from "../../widgets/DeliveryFeeCalculator/constants/deliveryTimeStep";
 
 interface ITimePicker {
     deliveryTime: Date,
-    setDeliveryTime: Dispatch<SetStateAction<Date>>;
+    setDeliveryTime: Dispatch<SetStateAction<Date>>,
+    dataTestId:string
 }
 
-const TimePicker = ({deliveryTime, setDeliveryTime}: ITimePicker) => {
-    const [value, setValue] = useState(formatDateForTimeList(deliveryTime))
-    useEffect(() => {
-        setValue(formatDateForTimeList(deliveryTime))
-    }, [deliveryTime])
-
-    const [ earliestDeliveryForToday,  setEarliestDeliveryForToday] = useDeliveryTime()
-    useEffect(()=>{
-        setEarliestDeliveryForToday(getEarliestDeliveryTime(deliveryTime,minDeliveryDelay, deliveryTimeStep,
-            startDeliveryTime, finishDeliveryTime ))
-    },[deliveryTime.getDate()])
-
-    const [timeList, setTimeList] = useTimeList(earliestDeliveryForToday,
+const TimePicker = ({deliveryTime, setDeliveryTime,dataTestId}: ITimePicker) => {
+    const value = useTimeSelectValue(deliveryTime)
+    const earliestTodayDelivery = useEarliestTodayDeliveryOfTheDay(deliveryTime)
+    const timeList = useTimeList(earliestTodayDelivery,
         createDateWithCustomTime(finishDeliveryTime, deliveryTime), deliveryTimeStep,);
 
-
-
     const handleChange = (time: string) => {
-        const newDeliveryTime = new Date(deliveryTime)
-        newDeliveryTime.setMinutes(Number(time.split(':')[1]))
-        newDeliveryTime.setHours(Number(time.split(':')[0]))
+        const newDeliveryTime = createDateWithCustomTime(time, deliveryTime)
         setDeliveryTime(newDeliveryTime)
     }
 
@@ -46,6 +29,7 @@ const TimePicker = ({deliveryTime, setDeliveryTime}: ITimePicker) => {
                     handleChange(e.target.value)}
                 disabled={timeList.length === 0}
                 style={timeList.length === 0 ? {background: 'var(--divideColor)'} : {}}
+                data-test-id={dataTestId}
         >
             {
                 timeList.map((time, index) => (

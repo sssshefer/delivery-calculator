@@ -6,8 +6,8 @@ import PositiveNumberInputWrap from "./ui/PositiveNumberInputWrap/PositiveNumber
 import PositiveIncDecInputWrap from "./ui/PositiveIncDecInputWrap/PositiveIncDecInputWrap";
 import TimeAndDatePickerWrap from "./ui/TimeAndDatePickerWrap/TimeAndDatePickerWrap";
 import DeliveryFeeWrap from "./ui/DeliveryFeeWrap/DeliveryFeeWrap";
-import {useDeliveryTime} from "../../shared/hooks/useDeliveryTime";
-import useDeliveryFee from "../../shared/hooks/useDeliveryFee";
+import {useDeliveryTime} from "./hooks/useDeliveryTime";
+import useDeliveryFee from "./hooks/useDeliveryFee";
 
 const DeliveryFeeCalculator: FC = () => {
     const [cartValue, setCartValue] = useState<number>(0)
