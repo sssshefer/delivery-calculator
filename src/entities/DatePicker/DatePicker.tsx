@@ -1,36 +1,35 @@
-import React, {Dispatch, FC, SetStateAction} from 'react';
-import cl from './DatePicker.module.scss'
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {dayNames} from "./constant/dayNames";
 
 interface IDatePicker {
-    setDeliveryTime: Dispatch<SetStateAction<Date>>
+    setTime: Dispatch<SetStateAction<Date>>
+    startDate:Date,
+    currentDate:Date
 }
 
-const DatePicker: FC<IDatePicker> = ({setDeliveryTime}) => {
-    const currentTime = new Date()
+const DatePicker= ({setTime, startDate, currentDate}:IDatePicker) => {
+    const [value, setValue] = useState(currentDate.getDate() - startDate.getDate())
+
+    useEffect(()=>{
+        setValue(currentDate.getDate() - startDate.getDate())
+    },[currentDate])
     const getNextDays = (days: number): Date => {
-        const nextDay = new Date(currentTime)
+        const nextDay = new Date(startDate)
         nextDay.setDate(nextDay.getDate() + days);
-        nextDay.setHours(11, 0, 0, 0)
+        nextDay.setHours(0, 0, 0, 0)
         return nextDay;
     };
 
     const handleChange = (days: number) => {
         const selectedTime = getNextDays(days)
-        if (selectedTime < new Date()) {
-            const currentTime = new Date();
-            currentTime.setMinutes(currentTime.getMinutes() + 45 - currentTime.getMinutes()%15)
-
-            setDeliveryTime(currentTime)
-        } else
-            setDeliveryTime(selectedTime)
+       setTime(selectedTime)
     }
 
 
     return (
-
         <select name="deliveryTime"
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChange(Number(e.target.value))}
+                value = {value}
         >
             <option value={0}>Today</option>
             <option value={1}>Tomorrow</option>

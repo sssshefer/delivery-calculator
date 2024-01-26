@@ -7,7 +7,7 @@ interface IPositiveIncDecInputWrap {
     children:ReactNode
 }
 
-const PositiveIncDecInputWrap: FC<IPositiveIncDecInputWrap> = ({title, className,children}) => {
+const PositiveIncDecInputWrap = ({title, className,children}:IPositiveIncDecInputWrap) => {
     return (
         <div className={`${cl.wrap} ${className}`} >
             <label className={cl.title}>{title}</label>

@@ -1,31 +1,32 @@
 import React from 'react';
 
-interface IProps {
+interface ICalcDeliveryFee {
     (cartValue: number,
     deliveryTime: Date,
     deliveryDistance: number,
     numberOfItems: number):number
 }
 
-const calcDeliveryFee:IProps = (cartValue,deliveryTime,deliveryDistance,numberOfItems) => {
+const calcDeliveryFee:ICalcDeliveryFee= (cartValue,deliveryTime,deliveryDistance,numberOfItems) => {
+    if (isExpensiveOrderDiscount(cartValue)) {
+        return 0
+    }
     let deliveryFee = 0;
-
     deliveryFee += calcCartValueFee(cartValue)
     deliveryFee += calcDistanceFee(deliveryDistance)
     deliveryFee += calcItemSurcharge(numberOfItems)
     deliveryFee += calcBulkFee(numberOfItems)
-
-    if (cartValue >= 200) {
-        return 0
-    }
+    
     const rushMultiplier = isFridayRush(deliveryTime) ? 1.2 : 1;
     deliveryFee *= rushMultiplier;
 
     deliveryFee = Math.min(15, deliveryFee)
 
-    return deliveryFee
+    return Number(deliveryFee.toFixed(2))
 };
-
+function isExpensiveOrderDiscount(cartValue:number):boolean{
+    return cartValue >= 200
+}
 function calcCartValueFee(cartValue: number):number {
     let totalFee = 0;
     if (cartValue < 10) {
@@ -38,7 +39,7 @@ function calcDistanceFee(deliveryDistance: number):number {
     let totalFee = 2;
     const distanceFeeStep = 500;
     const distanceFeeStart = 1000;
-    const adjustedDistance:number = Math.max(deliveryDistance, distanceFeeStart);
+    const adjustedDistance = Math.max(deliveryDistance, distanceFeeStart);
 
     const distanceFee = 1;
     totalFee += Math.ceil((adjustedDistance - distanceFeeStart) / distanceFeeStep) * distanceFee;
@@ -53,7 +54,7 @@ function calcItemSurcharge(numberOfItems: number):number {
         return 0;
     }
 
-    const surchargeQuantity:number = numberOfItems - thresholdForSurcharge;
+    const surchargeQuantity = numberOfItems - thresholdForSurcharge;
     return surchargeQuantity * itemSurchargeRate;
 }
 
@@ -69,8 +70,8 @@ function calcBulkFee(numberOfItems: number):0|1.2 {
 }
 
 function isFridayRush(deliveryTime: Date):boolean {
-    const day:string = deliveryTime.toLocaleString('en-US', {weekday: 'long'});
-    const hour:number = deliveryTime.getHours();
+    const day= deliveryTime.toLocaleString('en-US', {weekday: 'long'});
+    const hour = deliveryTime.getHours();
 
     return day.toLowerCase() === 'friday' && hour >= 15 && hour < 19;
 }

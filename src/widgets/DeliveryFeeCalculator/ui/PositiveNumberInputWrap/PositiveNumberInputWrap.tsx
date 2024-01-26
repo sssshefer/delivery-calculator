@@ -9,7 +9,7 @@ interface IPositiveNumberInputWrap {
     children: ReactNode
 }
 
-const PositiveNumberInputWrap: FC<IPositiveNumberInputWrap> = ({title, className, units, children}) => {
+const PositiveNumberInputWrap = ({title, className, units, children}:IPositiveNumberInputWrap) => {
     return (
         <div className={`${cl.wrap} ${className}`}>
             <label>{title}</label>

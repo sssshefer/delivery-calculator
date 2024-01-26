@@ -4,11 +4,11 @@ interface IDeliveryFeeWrap{
     title:string,
     children:ReactNode
 }
-const DeliveryFeeWrap:FC<IDeliveryFeeWrap> = ({title, children}) => {
+const DeliveryFeeWrap = ({title, children}:IDeliveryFeeWrap) => {
     return (
         <div className={cl.wrap}>
-            <span>{title}</span>
-            <span className={cl.value}>
+            {title}
+            <span className={cl.valueWrap}>
                 {children} €
             </span>
         </div>

@@ -1,14 +1,15 @@
 import React, {FC} from 'react';
 import cl from './PositiveIncDecInput.module.scss'
-import SmallActionButton from "../SmallActionButton/SmallActionButton";
+import IconButton from "../../shared/ui/IconButton/IconButton";
 
-interface IPositiveIncDecInput {
+interface IPositiveIncDecInput
+    extends React.InputHTMLAttributes<HTMLInputElement>  {
     dataTestId: string,
     onClick: (prev: any) => void,
     value: number
 }
 
-const PositiveIncDecInput: FC<IPositiveIncDecInput> = ({ dataTestId, onClick, value}) => {
+const PositiveIncDecInput= ({ dataTestId, onClick, value, ...inputOtherProps}:IPositiveIncDecInput) => {
     function handleSubtract() {
         if (value > 0)
             onClick((prev: number) => prev - 1)
@@ -16,9 +17,9 @@ const PositiveIncDecInput: FC<IPositiveIncDecInput> = ({ dataTestId, onClick, va
 
     return (
         <div className={cl.wrap}>
-            <SmallActionButton onClick={handleSubtract}>-</SmallActionButton>
-            <input data-test-id={dataTestId} disabled={true} value={value} type={"number"}/>
-            <SmallActionButton onClick={() => onClick((prev: number) => prev + 1)}>+</SmallActionButton>
+            <IconButton onClick={handleSubtract}>-</IconButton>
+            <input data-test-id={dataTestId} disabled={true} value={value} type={"number"} {...inputOtherProps}/>
+            <IconButton onClick={() => onClick((prev: number) => prev + 1)}>+</IconButton>
         </div>
     );
 };

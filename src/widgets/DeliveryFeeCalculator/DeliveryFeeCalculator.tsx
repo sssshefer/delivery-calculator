@@ -1,16 +1,13 @@
-import React, {FC, useEffect, useRef, useState} from 'react';
+import React, {FC, useState} from 'react';
 import cl from './DeliveryFeeCalculator.module.scss'
 import PositiveNumberInput from "../../entities/PositiveNumberInput/PositiveNumberInput";
 import PositiveIncDecInput from "../../entities/PositiveIncDecInput/PositiveIncDecInput";
-import DatePicker from "../../entities/DatePicker/DatePicker";
-import TimeInput from "../../entities/TimeInput/TimeInput";
-import DeliveryFee from "../../entities/DeliveryFee/DeliveryFee";
-import {deliveryTimeStep, minDeliveryDelay} from "./constants/constants";
 import PositiveNumberInputWrap from "./ui/PositiveNumberInputWrap/PositiveNumberInputWrap";
 import PositiveIncDecInputWrap from "./ui/PositiveIncDecInputWrap/PositiveIncDecInputWrap";
-import DatePickerWrap from "./ui/DatePickerWrap/DatePickerWrap";
+import TimeAndDatePickerWrap from "./ui/TimeAndDatePickerWrap/TimeAndDatePickerWrap";
 import DeliveryFeeWrap from "./ui/DeliveryFeeWrap/DeliveryFeeWrap";
 import {useDeliveryTime} from "../../shared/hooks/useDeliveryTime";
+import useDeliveryFee from "../../shared/hooks/useDeliveryFee";
 
 const DeliveryFeeCalculator: FC = () => {
     const [cartValue, setCartValue] = useState<number>(0)
@@ -18,9 +15,7 @@ const DeliveryFeeCalculator: FC = () => {
     const [numberOfItems, setNumberOfItems] = useState<number>(0)
     const [deliveryTime, setDeliveryTime] = useDeliveryTime()
 
-    const [deliveryFee, setDeliveryFee] = useState<number>(0)
-
-
+    const deliveryFee = useDeliveryFee(cartValue, deliveryTime, deliveryDistance, numberOfItems)
 
     return (
         <div className={cl.wrap}>
@@ -43,14 +38,11 @@ const DeliveryFeeCalculator: FC = () => {
                                              value={numberOfItems}/>
                     </PositiveIncDecInputWrap>
                 </div>
-                <DatePickerWrap title={"Select delivery Time"} setDeliveryTime={setDeliveryTime} deliveryTime={deliveryTime}/>
+                <TimeAndDatePickerWrap title={"Select delivery Time"} deliveryTime={deliveryTime}
+                                       setDeliveryTime={setDeliveryTime}/>
             </form>
             <DeliveryFeeWrap title={"Delivery Fee"}>
-                <DeliveryFee deliveryFee={deliveryFee}
-                             numberOfItems={numberOfItems} cartValue={cartValue}
-                             deliveryTime={deliveryTime}
-                             deliveryDistance={deliveryDistance}
-                             setDeliveryFee={setDeliveryFee}/>
+                {deliveryFee}
             </DeliveryFeeWrap>
         </div>
     );
