@@ -5,7 +5,7 @@
   .title {
     font-size: var(--mediumFont);
     font-weight: var(--semiBold);
-    margin:15px 0 25px;
+    margin: 15px 0 25px;
   }
 
   .selectsWrap {
@@ -17,14 +17,34 @@
     width: 47%;
     padding: 5px;
     font-weight: var(--semiBold);
-    font-size: var(--mediumFontFont);
+    font-size: var(--mediumFont);
     border: 2px solid var(--lightGreyColor);
     border-radius: 6px;
   }
 
   select option {
-    font-size: var(--mediumFontFont);
+    font-size: var(--mediumFont);
     font-weight: var(--semiBold);
     color: lighten(#1d1d1d, 20%);
+  }
+  select:focus > option:checked {
+    background: var(--secondaryColor);
+    color:var(--lightPrimaryColor)
+  }
+
+}
+
+@media (max-width: 576px) {
+  .wrap{
+    margin-bottom: 10px;
+  }
+
+  .wrap .selectsWrap {
+    flex-direction: column;
+
+  }
+  .wrap .selectsWrap select{
+    margin:0 0 20px;
+    width: 100%;
   }
 }
