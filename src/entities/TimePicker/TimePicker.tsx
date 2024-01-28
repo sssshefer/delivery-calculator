@@ -6,13 +6,13 @@ import useTimeSelectValue from "./hooks/useTimeSelectValue";
 import useEarliestTodayDeliveryOfTheDay from "../../widgets/DeliveryFeeCalculator/hooks/useEarliestDeliveryOfTheDay";
 import {deliveryTimeStep} from "../../widgets/DeliveryFeeCalculator/constants/deliveryTimeStep";
 
-interface ITimePicker {
+interface ITimePicker extends React.SelectHTMLAttributes<HTMLSelectElement>{
     deliveryTime: Date,
     setDeliveryTime: Dispatch<SetStateAction<Date>>,
     dataTestId:string
 }
 
-const TimePicker = ({deliveryTime, setDeliveryTime,dataTestId}: ITimePicker) => {
+const TimePicker = ({deliveryTime, setDeliveryTime,dataTestId, ...otherSelectProps}: ITimePicker) => {
     const value = useTimeSelectValue(deliveryTime)
     const earliestTodayDelivery = useEarliestTodayDeliveryOfTheDay(deliveryTime)
     const timeList = useTimeList(earliestTodayDelivery,
@@ -24,12 +24,10 @@ const TimePicker = ({deliveryTime, setDeliveryTime,dataTestId}: ITimePicker) => 
     }
 
     return (
-        <select value={value} name="deliveryTime" id="time"
+        <select value={value} name="timePicker"
                 onChange={(e) =>
                     handleChange(e.target.value)}
-                disabled={timeList.length === 0}
-                style={timeList.length === 0 ? {background: 'var(--divideColor)'} : {}}
-                data-test-id={dataTestId}
+                data-test-id={dataTestId} {...otherSelectProps}
         >
             {
                 timeList.map((time, index) => (

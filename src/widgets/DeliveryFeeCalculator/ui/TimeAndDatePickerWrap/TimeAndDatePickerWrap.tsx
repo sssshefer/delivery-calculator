@@ -16,8 +16,8 @@ const TimeAndDatePickerWrap = ({title, deliveryTime, setDeliveryTime,}: ITimeAnd
             <div className={cl.title}>{title}</div>
             <div className={cl.selectsWrap}>
                 <DatePicker setTime={setDeliveryTime} startDate={new Date()} currentDate={deliveryTime}
-                            numberOfDeliveryDays={numberOfDeliveryDays} dataTestId={"datePicker"}/>
-                <TimePicker deliveryTime={deliveryTime} setDeliveryTime={setDeliveryTime} dataTestId={"timePicker"}/>
+                            numberOfDeliveryDays={numberOfDeliveryDays} dataTestId={"deliveryTime"}/>
+                <TimePicker deliveryTime={deliveryTime} setDeliveryTime={setDeliveryTime} dataTestId={"deliveryTime"}/>
             </div>
         </div>
     );

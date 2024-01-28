@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {finishDeliveryTime,} from "../constants/finishDeliveryTime";
-import {getEarliestDeliveryTime} from "../../../shared/utils/getMinDeliveryTime";
+import {getEarliestDeliveryTime} from "../utils/getMinDeliveryTime";
 import {minDeliveryDelay} from "../constants/minDeliveryDelay";
 import {deliveryTimeStep} from "../constants/deliveryTimeStep";
 import {startDeliveryTime} from "../constants/startDeliveryTime";

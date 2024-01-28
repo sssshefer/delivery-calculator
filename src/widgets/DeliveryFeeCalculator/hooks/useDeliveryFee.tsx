@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import calcDeliveryFee from "../../../shared/utils/calcDeliveryFee";
+import calcDeliveryFee from "../utils/calcDeliveryFee";
 interface IUseDeliveryFee {
     (cartValue: number,
     deliveryTime: Date,

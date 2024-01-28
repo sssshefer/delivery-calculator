@@ -1,5 +1,4 @@
-import React, {FC, ReactElement, ReactNode} from 'react';
-import PositiveNumberInput from "../../../../entities/PositiveNumberInput/PositiveNumberInput";
+import React, {ReactNode} from 'react';
 import cl from "./PositiveNumberInputWrap.module.scss";
 
 interface IPositiveNumberInputWrap {
@@ -13,10 +12,8 @@ const PositiveNumberInputWrap = ({title, className, units, children}:IPositiveNu
     return (
         <div className={`${cl.wrap} ${className}`}>
             <label>{title}</label>
-
             {children}
             <span className={cl.units}>{units}</span>
-
         </div>
     );
 };

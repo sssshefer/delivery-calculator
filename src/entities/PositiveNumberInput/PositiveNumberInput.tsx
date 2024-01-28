@@ -1,5 +1,4 @@
-import React, {FC, useState} from 'react';
-import cl from './PositiveNumberInput.module.scss'
+import React, {useState} from 'react';
 
 interface IPositiveNumberInput
     extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -22,7 +21,6 @@ const PositiveNumberInput= ({dataTestId, value, setValue,...otherInputProps}:IPo
         <input value={showedValue}
                onChange={(e: React.ChangeEvent<HTMLInputElement>): void => handleChange(e.currentTarget.value)}
                data-test-id={dataTestId} type="number" min={0} {...otherInputProps}/>
-
     );
 };
 

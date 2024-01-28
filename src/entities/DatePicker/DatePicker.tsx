@@ -1,7 +1,7 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {dayNames} from "./constant/dayNames";
 
-interface IDatePicker {
+interface IDatePicker extends React.SelectHTMLAttributes<HTMLSelectElement>  {
     setTime: Dispatch<SetStateAction<Date>>
     startDate: Date,
     currentDate: Date,
@@ -9,7 +9,7 @@ interface IDatePicker {
     dataTestId:string
 }
 
-const DatePicker = ({setTime, startDate, currentDate, numberOfDeliveryDays, dataTestId}: IDatePicker,) => {
+const DatePicker = ({setTime, startDate, currentDate, numberOfDeliveryDays, dataTestId, ...otherSelectProps}: IDatePicker,) => {
     const currentStartDaysDelta = currentDate.getDate() - startDate.getDate()
     const getNextDays = (days: number): Date => {
         const nextDay = new Date(startDate)
@@ -25,9 +25,9 @@ const DatePicker = ({setTime, startDate, currentDate, numberOfDeliveryDays, data
 
 
     return (
-        <select name="deliveryTime"
+        <select name="datePicker"
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChange(Number(e.target.value))}
-                value={currentStartDaysDelta} data-test-id={dataTestId}
+                value={currentStartDaysDelta} data-test-id={dataTestId} {...otherSelectProps}
         >
             <option value={0}>Today</option>
             <option value={1}>Tomorrow</option>
