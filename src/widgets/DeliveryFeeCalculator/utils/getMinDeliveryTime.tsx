@@ -1,14 +1,9 @@
 import createDateWithCustomTime from "../../../entities/TimePicker/utils/createDateWithCustomTime";
+import {ITimePickerListData} from "../../../entities/TimePicker";
 
 interface IGetEarliestDeliveryTime {
     (date: Date,
-     deliveryListData: {
-         timeStep: number,
-         regularStartTime: string,
-         regularFinishTime: string,
-         minDelay:number
-
-     }): Date
+     deliveryListData: ITimePickerListData): Date
 }
 
 export const getEarliestDeliveryTime: IGetEarliestDeliveryTime = (date, deliveryListData) => {
