@@ -1,15 +1,25 @@
 import createDateWithCustomTime from "../../../entities/TimePicker/utils/createDateWithCustomTime";
 
-export function getEarliestDeliveryTime(date: Date, minDeliveryDelay: number, deliveryTimeStep: number,
-                                        startDeliveryTime: string, finishDeliveryTime: string): Date {
-    const regularStartTime = createDateWithCustomTime(startDeliveryTime, date)
-    const regularFinishTime = createDateWithCustomTime(finishDeliveryTime, date)
+interface IGetEarliestDeliveryTime {
+    (date: Date,
+     deliveryListData: {
+         timeStep: number,
+         regularStartTime: string,
+         regularFinishTime: string,
+         minDelay:number
+
+     }): Date
+}
+
+export const getEarliestDeliveryTime: IGetEarliestDeliveryTime = (date, deliveryListData) => {
+    const regularStartTime = createDateWithCustomTime(deliveryListData.regularStartTime, date)
+    const regularFinishTime = createDateWithCustomTime(deliveryListData.regularFinishTime, date)
 
     if (!isToday(date)) {
         return regularStartTime;
     }
 
-    let earliest = calcDelayedDeliveryTime(new Date(), deliveryTimeStep, minDeliveryDelay)
+    let earliest = calcDelayedDeliveryTime(new Date(), deliveryListData.timeStep, deliveryListData.minDelay)
 
     if (tooEarlyForDelivery(earliest, regularStartTime)) {
         return regularStartTime

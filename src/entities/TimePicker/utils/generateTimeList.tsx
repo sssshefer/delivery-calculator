@@ -18,9 +18,9 @@ const generateTimeList: IGenerateTimeList = (startTime,finishDate, step) => {
         }
 
         options.push(formatDateForTimeList(listItem));
-        const day = listItem.getDate()
+        const date = listItem.getDate()
         listItem.setMinutes(listItem.getMinutes() + step);
-        if (day != listItem.getDate()) {
+        if (date != listItem.getDate()) {
             break
         }
     }

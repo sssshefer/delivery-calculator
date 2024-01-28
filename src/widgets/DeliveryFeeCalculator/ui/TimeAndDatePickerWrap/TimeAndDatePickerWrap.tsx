@@ -1,8 +1,12 @@
 import React from 'react';
 import cl from "./TimeAndDatePickerWrap.module.scss";
-import DatePicker from "../../../../entities/DatePicker/DatePicker";
-import TimePicker from "../../../../entities/TimePicker/TimePicker";
+import DatePicker from "../../../../entities/DatePicker";
+import TimePicker from "../../../../entities/TimePicker";
 import {numberOfDeliveryDays} from "../../constants/numberOfDeliveryDays";
+
+import {getEarliestDeliveryTime} from "../../utils/getMinDeliveryTime";
+
+import {deliveryTimeListData} from "../../constants/deliveryTimeListData";
 
 interface ITimeAndDatePickerWrap {
     title: string,
@@ -16,8 +20,10 @@ const TimeAndDatePickerWrap = ({title, deliveryTime, setDeliveryTime,}: ITimeAnd
             <div className={cl.title}>{title}</div>
             <div className={cl.selectsWrap}>
                 <DatePicker setTime={setDeliveryTime} startDate={new Date()} currentDate={deliveryTime}
-                            numberOfDeliveryDays={numberOfDeliveryDays} dataTestId={"deliveryTime"}/>
-                <TimePicker deliveryTime={deliveryTime} setDeliveryTime={setDeliveryTime} dataTestId={"deliveryTime"}/>
+                            numberOfShownDays={numberOfDeliveryDays} dataTestId={"deliveryTime"}/>
+                <TimePicker currentTime={deliveryTime} setCurrentTime={setDeliveryTime} dataTestId={"deliveryTime"}
+                            listData = {deliveryTimeListData}
+                calcEarliestTime={()=>getEarliestDeliveryTime(deliveryTime, deliveryTimeListData)}/>
             </div>
         </div>
     );

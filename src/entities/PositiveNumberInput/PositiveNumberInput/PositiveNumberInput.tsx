@@ -7,7 +7,6 @@ interface IPositiveNumberInput
     setValue: (value: number) => void,
 }
 
-
 const PositiveNumberInput= ({dataTestId, value, setValue,...otherInputProps}:IPositiveNumberInput) => {
     const [showedValue, setShowedValue] = useState<string>(String(value))
 
