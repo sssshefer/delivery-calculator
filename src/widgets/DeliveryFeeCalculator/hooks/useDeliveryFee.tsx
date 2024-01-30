@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import calcDeliveryFee from "../utils/calcDeliveryFee";
+
 interface IUseDeliveryFee {
     (cartValue: number,
     deliveryTime: Date,
@@ -9,7 +10,8 @@ interface IUseDeliveryFee {
 const useDeliveryFee:IUseDeliveryFee = (cartValue, deliveryTime, deliveryDistance, numberOfItems) => {
     const [deliveryFee, setDeliveryFee] = useState<number>(0)
     useEffect(() => {
-        setDeliveryFee(calcDeliveryFee(cartValue, deliveryTime, deliveryDistance, numberOfItems))
+        const deliveryFee= calcDeliveryFee(cartValue, deliveryTime, deliveryDistance, numberOfItems)
+        setDeliveryFee(deliveryFee)
     }, [cartValue, deliveryTime, deliveryDistance, numberOfItems])
 
     return deliveryFee;

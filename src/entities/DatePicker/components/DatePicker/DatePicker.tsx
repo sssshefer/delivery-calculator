@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction} from 'react';
-import {dayNames} from "../constant/dayNames";
-import {getNextDays} from "../utils/getNextDays";
+import {dayNames} from "../../constant/dayNames";
+import {getNextDays} from "../../utils/getNextDays";
 
 interface IDatePicker extends React.SelectHTMLAttributes<HTMLSelectElement>  {
     setTime: Dispatch<SetStateAction<Date>>

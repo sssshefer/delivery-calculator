@@ -10,7 +10,7 @@ export const getEarliestDeliveryTime: IGetEarliestDeliveryTime = (date, delivery
     const regularStartTime = createDateWithCustomTime(deliveryListData.regularStartTime, date)
     const regularFinishTime = createDateWithCustomTime(deliveryListData.regularFinishTime, date)
 
-    if (!isToday(date)) {
+    if (isNotToday(date)) {
         return regularStartTime;
     }
 
@@ -27,8 +27,8 @@ export const getEarliestDeliveryTime: IGetEarliestDeliveryTime = (date, delivery
     return earliest
 }
 
-function isToday(date: Date): boolean {
-    return date.getDate() === new Date().getDate()
+function isNotToday(date: Date): boolean {
+    return date.getDate() !== new Date().getDate()
 }
 
 function calcDelayedDeliveryTime(date: Date, deliveryTimeStep: number, minDeliveryDelay: number) {

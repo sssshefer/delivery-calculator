@@ -1,3 +1,3 @@
-import PositiveNumberInput from "./PositiveNumberInput/PositiveNumberInput";
+import PositiveNumberInput from "./components/PositiveNumberInput/PositiveNumberInput";
 
 export default PositiveNumberInput;

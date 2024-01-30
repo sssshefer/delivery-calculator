@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getEarliestDeliveryTime} from "../utils/getMinDeliveryTime";
+import {getEarliestDeliveryTime} from "../utils/getEarliestDeliveryTime";
 import {deliveryTimeListData} from "../constants/deliveryTimeListData";
 
 export const useDeliveryTime = (): [Date, React.Dispatch<React.SetStateAction<Date>>] => {

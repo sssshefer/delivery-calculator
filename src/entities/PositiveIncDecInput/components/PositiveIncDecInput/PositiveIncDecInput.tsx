@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './PositiveIncDecInput.module.scss'
-import IconButton from "../../../shared/ui/IconButton/IconButton";
+import IconButton from "../../../../shared/ui/IconButton/IconButton";
 
 interface IPositiveIncDecInput
     extends React.InputHTMLAttributes<HTMLInputElement>  {

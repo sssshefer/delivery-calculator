@@ -1,8 +1,8 @@
 import React, {Dispatch, SetStateAction} from 'react';
-import useTimeList from "../hooks/useTimeList";
-import createDateWithCustomTime from "../utils/createDateWithCustomTime";
-import useTimeSelectValue from "../hooks/useTimeSelectValue";
-import useEarliestTimeOfTheDay from "../hooks/useEarliestTimeOfTheDay";
+import useTimeList from "../../hooks/useTimeList";
+import createDateWithCustomTime from "../../utils/createDateWithCustomTime";
+import useTimeSelectValue from "../../hooks/useTimeSelectValue";
+import useEarliestTimeOfTheDay from "../../hooks/useEarliestTimeOfTheDay";
 
 interface ITimePicker extends React.SelectHTMLAttributes<HTMLSelectElement> {
     currentTime: Date,

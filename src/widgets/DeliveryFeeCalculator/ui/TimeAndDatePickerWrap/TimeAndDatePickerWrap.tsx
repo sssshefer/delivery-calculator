@@ -4,7 +4,7 @@ import DatePicker from "../../../../entities/DatePicker";
 import TimePicker from "../../../../entities/TimePicker";
 import {numberOfDeliveryDays} from "../../constants/numberOfDeliveryDays";
 
-import {getEarliestDeliveryTime} from "../../utils/getMinDeliveryTime";
+import {getEarliestDeliveryTime} from "../../utils/getEarliestDeliveryTime";
 
 import {deliveryTimeListData} from "../../constants/deliveryTimeListData";
 

@@ -1,3 +1,3 @@
-import PositiveIncDecInput from "./PositiveIncDecInput/PositiveIncDecInput";
+import PositiveIncDecInput from "./components/PositiveIncDecInput/PositiveIncDecInput";
 
 export default PositiveIncDecInput;

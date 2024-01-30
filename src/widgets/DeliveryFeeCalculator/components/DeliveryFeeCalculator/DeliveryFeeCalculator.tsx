@@ -1,13 +1,13 @@
 import React, {FC, useState} from 'react';
 import cl from './DeliveryFeeCalculator.module.scss'
-import PositiveNumberInput from "../../../entities/PositiveNumberInput";
-import PositiveIncDecInput from "../../../entities/PositiveIncDecInput";
-import PositiveNumberInputWrap from "../ui/PositiveNumberInputWrap/PositiveNumberInputWrap";
-import PositiveIncDecInputWrap from "../ui/PositiveIncDecInputWrap/PositiveIncDecInputWrap";
-import TimeAndDatePickerWrap from "../ui/TimeAndDatePickerWrap/TimeAndDatePickerWrap";
-import DeliveryFeeWrap from "../ui/DeliveryFeeWrap/DeliveryFeeWrap";
-import {useDeliveryTime} from "../hooks/useDeliveryTime";
-import useDeliveryFee from "../hooks/useDeliveryFee";
+import PositiveNumberInput from "../../../../entities/PositiveNumberInput";
+import PositiveIncDecInput from "../../../../entities/PositiveIncDecInput";
+import PositiveNumberInputWrap from "../../ui/PositiveNumberInputWrap/PositiveNumberInputWrap";
+import PositiveIncDecInputWrap from "../../ui/PositiveIncDecInputWrap/PositiveIncDecInputWrap";
+import TimeAndDatePickerWrap from "../../ui/TimeAndDatePickerWrap/TimeAndDatePickerWrap";
+import DeliveryFeeWrap from "../../ui/DeliveryFeeWrap/DeliveryFeeWrap";
+import {useDeliveryTime} from "../../hooks/useDeliveryTime";
+import useDeliveryFee from "../../hooks/useDeliveryFee";
 
 const DeliveryFeeCalculator: FC = () => {
     const [cartValue, setCartValue] = useState<number>(0)

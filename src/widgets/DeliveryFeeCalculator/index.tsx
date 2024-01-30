@@ -1,3 +1,3 @@
-import DeliveryFeeCalculator from "./DeliveryFeeCalculator/DeliveryFeeCalculator";
+import DeliveryFeeCalculator from "./components/DeliveryFeeCalculator/DeliveryFeeCalculator";
 
 export default DeliveryFeeCalculator;

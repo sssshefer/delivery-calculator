@@ -24,9 +24,11 @@ const calcDeliveryFee:ICalcDeliveryFee= (cartValue,deliveryTime,deliveryDistance
 
     return Number(deliveryFee.toFixed(2))
 };
+
 function isExpensiveOrderDiscount(cartValue:number):boolean{
     return cartValue >= 200
 }
+
 function calcCartValueFee(cartValue: number):number {
     let totalFee = 0;
     if (cartValue < 10) {
