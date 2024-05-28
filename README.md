@@ -11,6 +11,11 @@ Git clone the repo
 $ git clone https://github.com/sssshefer/delivery-calculator.git
 ```
 
+Go to the root folder of the project. Install dependencies 
+```bash
+$ npm install
+```
+
 Run the application 
 ```bash
 $ npm run start

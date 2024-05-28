@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "test:chrome": "npx playwright test --headed --browser=chromium",
     "test:firefox": "npx playwright test --headed --browser=firefox",
@@ -45,7 +45,10 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-typescript": "^7.24.6",
+    "@jest/globals": "^29.7.0",
     "@playwright/test": "^1.41.1",
+    "jest": "^27.5.1",
     "nodemon": "^3.0.3",
     "sass": "^1.70.0"
   }
