@@ -20,3 +20,8 @@ Run the application
 ```bash
 $ npm run start
 ```
+
+Run all tests
+```bash
+$ npm test
+```
