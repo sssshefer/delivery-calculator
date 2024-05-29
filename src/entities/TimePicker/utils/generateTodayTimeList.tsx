@@ -1,5 +1,5 @@
 import React from 'react';
-import formatDateForTimeList from "./formatDateForTimeList";
+import extractHoursAndMinutesFromDate from "./extractHoursAndMinutesFromDate";
 
 interface IGenerateTimeList {
     (startTime: Date,
@@ -8,7 +8,7 @@ interface IGenerateTimeList {
     ): string[]
 }
 
-const generateTimeList: IGenerateTimeList = (startTime,finishDate, step) => {
+const generateTodayTimeList: IGenerateTimeList = (startTime, finishDate, step) => {
     const firstListTime = new Date(startTime);
     const options = [];
     const listItem = new Date(firstListTime)
@@ -17,7 +17,7 @@ const generateTimeList: IGenerateTimeList = (startTime,finishDate, step) => {
             break
         }
 
-        options.push(formatDateForTimeList(listItem));
+        options.push(extractHoursAndMinutesFromDate(listItem));
         const date = listItem.getDate()
         listItem.setMinutes(listItem.getMinutes() + step);
         if (date != listItem.getDate()) {
@@ -28,4 +28,4 @@ const generateTimeList: IGenerateTimeList = (startTime,finishDate, step) => {
     return options;
 };
 
-export default generateTimeList;
+export default generateTodayTimeList;

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import generateTimeList from "../utils/generateTimeList";
+import generateTodayTimeList from "../utils/generateTodayTimeList";
 
 interface IUseTimeList {
     (startTime: Date,
@@ -11,7 +11,7 @@ interface IUseTimeList {
 const UseTimeList: IUseTimeList = (startTime, finishTime, step) => {
     const [timeList, setTimeList] = useState<string[]>([]);
     useEffect(() => {
-        setTimeList(generateTimeList(startTime, finishTime, step));
+        setTimeList(generateTodayTimeList(startTime, finishTime, step));
     }, [startTime]);
 
     return timeList

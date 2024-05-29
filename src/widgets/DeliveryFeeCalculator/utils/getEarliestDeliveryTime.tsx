@@ -1,4 +1,4 @@
-import createDateWithCustomTime from "../../../entities/TimePicker/utils/createDateWithCustomTime";
+import addHoursAndMinutesToDate from "../../../entities/TimePicker/utils/addHoursAndMinutesToDate";
 import {ITimePickerListData} from "../../../entities/TimePicker";
 
 interface IGetEarliestDeliveryTime {
@@ -7,8 +7,8 @@ interface IGetEarliestDeliveryTime {
 }
 
 export const getEarliestDeliveryTime: IGetEarliestDeliveryTime = (date, deliveryListData) => {
-    const regularStartTime = createDateWithCustomTime(deliveryListData.regularStartTime, date)
-    const regularFinishTime = createDateWithCustomTime(deliveryListData.regularFinishTime, date)
+    const regularStartTime = addHoursAndMinutesToDate(deliveryListData.regularStartTime, date)
+    const regularFinishTime = addHoursAndMinutesToDate(deliveryListData.regularFinishTime, date)
 
     if (isNotToday(date)) {
         return regularStartTime;

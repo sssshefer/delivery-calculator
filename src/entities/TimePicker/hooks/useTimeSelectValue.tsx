@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import formatDateForTimeList from "../utils/formatDateForTimeList";
+import extractHoursAndMinutesFromDate from "../utils/extractHoursAndMinutesFromDate";
 
 
 const useTimeSelectValue = (time: Date): string => {
     const [value, setValue] = useState('')
 
     useEffect(() => {
-        setValue(formatDateForTimeList(time))
+        setValue(extractHoursAndMinutesFromDate(time))
     }, [time])
     return value
 };

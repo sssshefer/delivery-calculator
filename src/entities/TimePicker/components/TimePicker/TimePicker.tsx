@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import useTimeList from "../../hooks/useTimeList";
-import createDateWithCustomTime from "../../utils/createDateWithCustomTime";
+import addHoursAndMinutesToDate from "../../utils/addHoursAndMinutesToDate";
 import useTimeSelectValue from "../../hooks/useTimeSelectValue";
 import useEarliestTimeOfTheDay from "../../hooks/useEarliestTimeOfTheDay";
 
@@ -24,10 +24,10 @@ const TimePicker = ({
     const earliestTodayTime = useEarliestTimeOfTheDay(currentTime, calcEarliestTime)
 
     const timeList = useTimeList(earliestTodayTime,
-        createDateWithCustomTime(listData.regularFinishTime, currentTime), listData.timeStep,);
+        addHoursAndMinutesToDate(listData.regularFinishTime, currentTime), listData.timeStep,);
 
     const handleChange = (time: string) => {
-        const newTime = createDateWithCustomTime(time, currentTime)
+        const newTime = addHoursAndMinutesToDate(time, currentTime)
         setCurrentTime(newTime)
     }
 

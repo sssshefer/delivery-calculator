@@ -1,6 +1,6 @@
 import React from 'react';
 
-const formatDateForTimeList = (time:Date):string => {
+const extractHoursAndMinutesFromDate = (time:Date):string => {
     return time.toLocaleTimeString('en-Gb', {
         hour: '2-digit',
         minute: '2-digit',
@@ -8,4 +8,4 @@ const formatDateForTimeList = (time:Date):string => {
     })
 };
 
-export default formatDateForTimeList;
+export default extractHoursAndMinutesFromDate;
